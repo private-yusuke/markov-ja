@@ -1,0 +1,25 @@
+{
+  "name": "markov-ja",
+  "version": "1.0.0",
+  "description": "A Markov chain library for Japanese language.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": {
+    "name": "private-yusuke"
+  },
+  "readme": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/private-yusuke/markov-ja"
+  },
+  "bugs": {
+    "url": "https://github.com/private-yusuke/markov-ja/issues"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "child_process": "^1.0.2",
+    "shell-quote": "^1.6.1"
+  }
+}
