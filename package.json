@@ -1,10 +1,11 @@
 {
   "name": "markov-ja",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A Markov chain library for Japanese language.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "example": "node test.js"
   },
   "author": {
     "name": "private-yusuke"
@@ -21,5 +22,13 @@
   "dependencies": {
     "child_process": "^1.0.2",
     "shell-quote": "^1.6.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.5.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0"
   }
 }

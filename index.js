@@ -1,10 +1,7 @@
 const MeCab = require('./mecab')
-const fs = require('fs')
-
 /**
  * @class MarkovJa
  * @classdesc マルコフ連鎖を日本語で行うためのクラスです。
- * @prop {string} DB_PATH データベースのパス。相対パスでも良いです。
  * @prop {MeCab} mecab MeCab のインスタンスです。
  * @prop {Object} rootTriplet 単語の接続の羅列。
  */
@@ -17,16 +14,19 @@ class MarkovJa {
   }
   /**
    * 日本語用マルコフ連鎖のクラスのコンストラクタです。
-   * 引数にデータベースのパスを入れない場合は、'triplets_db.json'としてカレントディレクトリに生成します。
-   * @param {string} DB_PATH データベース(json)のパス。
    */
-  constructor (DB_PATH = 'triplets_db.json') {
+  constructor () {
     this.mecab = new MeCab()
-    this.DB_PATH = DB_PATH
+    this.rootTriplet = {}
+  }
+
+  /**
+   * 与えられたデータベースを読み込みます。
+   * @param {object} data データベース。
+   */
+  loadDatabase (data) {
     try {
-      // load the database
-      let text = fs.readFileSync(this.DB_PATH, 'utf-8')
-      this.rootTriplet = JSON.parse(text)
+      this.rootTriplet = JSON.parse(data)
     } catch (e) {
       this.rootTriplet = {}
     }
@@ -38,6 +38,13 @@ class MarkovJa {
    */
   morphplogicalAnalysis (text) {
     return this.mecab.wakachiSync(text.trim())
+  }
+  /**
+   * 学習を行います。
+   * @param {string} str 学習させるテキスト(multi-line allowed)
+   */
+  learn (str) {
+    this.makeTriplet(this.morphplogicalAnalysis(str))
   }
   /**
    * 分かち書きをしたテキストを用いて rootTriplet を更新します。
@@ -59,10 +66,10 @@ class MarkovJa {
     }
   }
   /**
-   * rootTriplet をデータベース(json)に保存します。
+   * データベースをエクスポートします。
    */
-  save () {
-    fs.writeFileSync(this.DB_PATH, JSON.stringify(this.rootTriplet))
+  exportDatabase () {
+    return JSON.stringify(this.rootTriplet)
   }
   /**
    * マルコフ連鎖で文章を生成します。
