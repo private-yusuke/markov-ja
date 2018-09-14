@@ -6,6 +6,7 @@ const sq = require('shell-quote')
  * @classdesc MeCabを用いた形態素解析をします。
  * @prop {string} command 実行するMeCabのコマンド。 フルパスで指定することもできますし、デフォルトのようにしてもいいです(裏ではshell上で実行されます)
  * @prop {string} execOptions `command`を実行するときにつけるオプションです。
+ * @prop {string} commandOptions `command`につけるオプションです。
  */
 class MeCab {
   /**
@@ -15,6 +16,7 @@ class MeCab {
   constructor () {
     this.command = 'mecab'
     this.execOptions = {}
+    this.commandOptions = null
   }
   /**
    * MeCab コマンドの出力に対して変数名をそれぞれ設定します。

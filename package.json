@@ -1,6 +1,6 @@
 {
   "name": "markov-ja",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Markov chain library for Japanese language.",
   "main": "index.js",
   "scripts": {
