@@ -33,9 +33,9 @@ fs.writeFileSync(path, markov.exportDatabase(), 'utf-8')
 
 ```javascript
 // You can change the options for mecab command
-markov.mecab.execOptions = '-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/'
+markov.mecab.commandOptions = '-d /usr/local/lib/mecab/dic/mecab-ipadic-neologd/'
 ```
 
-```javascript
-markov.DB_PATH = '/path/to/database.json'
-```
+For more information, please see my source code.
+
+There are Japanese jsdoc in the code.
