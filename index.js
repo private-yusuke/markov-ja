@@ -109,7 +109,9 @@ class MarkovJa {
   getTriplet (prefix1, prefix2) {
     let prefixes = [prefix1, prefix2]
     let chains = this.getChainFromDB(prefixes)
-    let triplet = Object.keys(this.getProbableTriplet(chains))[0].split(',')
+    let tmp = this.getProbableTriplet(chains)
+    if(!tmp) return [null, null, MarkovJa.END]
+    let triplet = Object.keys(tmp)[0].split(',')
     return [triplet[0], triplet[1], triplet[2]]
   }
   /**
@@ -157,6 +159,7 @@ class MarkovJa {
     let prefixes = [MarkovJa.BEGIN]
     let chains = this.getChainFromDB(prefixes)
     let triplet = this.getProbableTriplet(chains)
+    if(!triplet) return [null, null, MarkovJa.END]
     let triplets = Object.keys(triplet)[0].split(',')
     let res = [triplets[0], triplets[1], triplets[2]]
     return res
