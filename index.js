@@ -1,4 +1,4 @@
-const MeCab = require('./mecab')
+const MeCab = require('mecab-node')
 /**
  * @class MarkovJa
  * @classdesc マルコフ連鎖を日本語で行うためのクラスです。
