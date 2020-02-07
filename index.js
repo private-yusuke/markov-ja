@@ -164,6 +164,25 @@ class MarkovJa {
     let res = [triplets[0], triplets[1], triplets[2]]
     return res
   }
+
+  /**
+   * 与えられた文章に含まれる形態素を含むようなチェーンを削除します。
+   * @param {string} str 消す形態素を含む文章
+   */
+  removeTriplets (str) {
+    let sentences = this.morphplogicalAnalysis(str)
+    sentences.forEach(sentence => {
+      sentence.forEach(morpheme => {
+        if(!morpheme) return
+        for (let kelem of Object.keys(this.rootTriplet)) {
+          let spl = kelem.split(',')
+          if (spl.indexOf(morpheme) >= 0) {
+            delete this.rootTriplet[kelem]
+          }
+        }
+      })
+    });
+  }
 }
 
 module.exports = MarkovJa
