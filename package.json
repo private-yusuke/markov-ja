@@ -4,8 +4,8 @@
   "description": "A Markov chain library for Japanese language.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "example": "node test.js"
+    "lint": "eslint .",
+    "fix": "eslint --fix ."
   },
   "author": {
     "name": "private-yusuke"
