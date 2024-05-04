@@ -23,7 +23,7 @@
     "mecab-node": "^1.0.1"
   },
   "devDependencies": {
-    "eslint": "8.21.0",
+    "eslint": "9.2.0",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-node": "11.1.0",
